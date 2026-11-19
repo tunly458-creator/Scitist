@@ -702,10 +702,18 @@ const SKILLS={
  telescope:{no:'09',en:'Telescope',th:'กล้องโทรทรรศน์',subj:'a',text:'เปลี่ยนคำถาม (กดใช้ระหว่างตอบคำถาม)',combo:['galileo','เฉลยคำตอบได้ 1 ครั้ง'],ph:['question']},
  catalyst:{no:'10',en:'Catalyst',th:'ตัวเร่งปฏิกิริยา',subj:'c',text:'ใช้หลังทอยลูกเต๋า แต้มรวมเทิร์นนี้ +3',combo:['mendeleev','แต้มรวม +5'],ph:['rolled'],isNew:1},
  blackhole:{no:'11',en:'Black Hole',th:'หลุมดำ',subj:'a',text:'ดูดศัตรู 1 คนที่อยู่ข้างหน้าเราไม่เกิน 6 ช่อง ให้ถอยมาอยู่ช่องเดียวกับเรา',combo:['kepler','ระยะดูดไม่เกิน 10 ช่อง'],ph:GEN,isNew:1},
+ prism:{no:'12',en:'Prism',th:'ปริซึม',subj:'p',text:'ใช้ระหว่างตอบคำถาม ตัดตัวเลือกที่ผิดออก 2 ข้อ',combo:['newton','ถ้าตอบถูก เดินเพิ่มอีก 2 ช่อง'],ph:['question'],isNew:1},
+ magnet:{no:'13',en:'Magnet',th:'แม่เหล็ก',subj:'p',text:'ดูดตัวเองไปอยู่ช่องเดียวกับศัตรูที่อยู่ข้างหน้าไม่เกิน 5 ช่อง',combo:['tesla','ระยะดูดไม่เกิน 8 ช่อง'],ph:GEN,isNew:1},
+ photo:{no:'14',en:'Photosynthesis',th:'การสังเคราะห์ด้วยแสง',subj:'b',text:'จั่วการ์ดสกิลเพิ่ม 2 ใบ',ph:GEN,isNew:1},
+ meteor:{no:'15',en:'Meteor Shower',th:'ฝนดาวตก',subj:'a',text:'ศัตรูทุกคนถอยหลัง 2 ช่อง',combo:['galileo','ศัตรูทุกคนถอยหลัง 3 ช่อง'],ph:GEN,isNew:1},
 };
 const ART={
  catalyst:`<svg viewBox="0 0 320 200"><defs><pattern id="dc" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2" fill="#E7D3C3"/></pattern></defs><rect width="320" height="200" fill="#F4E7DD"/><rect width="320" height="200" fill="url(#dc)"/><g stroke="#2B2233" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><path d="M42 84h46M30 104h56M46 124h36" stroke="#C0601C"/><path d="M138 34h44M145 34v44l-44 80a7 7 0 0 0 6 10h106a7 7 0 0 0 6-10l-44-80V34" fill="#fff"/><path d="M121 118h78l20 36a5 5 0 0 1-4 8H105a5 5 0 0 1-4-8z" fill="#B4500C"/><path d="M170 52l-26 50h20l-12 40 34-56h-20l14-34z" fill="#F7C548"/><g transform="rotate(14 262 104)"><rect x="236" y="78" width="52" height="52" rx="10" fill="#fff"/><circle cx="250" cy="92" r="5" fill="#2B2233" stroke="none"/><circle cx="262" cy="104" r="5" fill="#2B2233" stroke="none"/><circle cx="274" cy="116" r="5" fill="#2B2233" stroke="none"/></g><circle cx="288" cy="72" r="18" fill="#D9434F"/></g><text x="288" y="79" text-anchor="middle" font-family="Mitr,sans-serif" font-size="19" font-weight="600" fill="#fff">+3</text><path d="M60 40l4 9 9 4-9 4-4 9-4-9-9-4 9-4z M232 160l3 6 6 3-6 3-3 6-3-6-6-3 6-3z" fill="#C0601C"/></svg>`,
- blackhole:`<svg viewBox="0 0 320 200"><defs><pattern id="db" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2" fill="#D7CDF0"/></pattern><radialGradient id="bh" cx=".5" cy=".5" r=".5"><stop offset=".45" stop-color="#0E0A1F"/><stop offset=".7" stop-color="#5B2DBB"/><stop offset="1" stop-color="#5B2DBB" stop-opacity="0"/></radialGradient></defs><rect width="320" height="200" fill="#ECE6F8"/><rect width="320" height="200" fill="url(#db)"/><circle cx="150" cy="100" r="78" fill="url(#bh)"/><g fill="none" stroke-linecap="round"><ellipse cx="150" cy="100" rx="96" ry="24" stroke="#F2A93B" stroke-width="7" transform="rotate(-14 150 100)"/><path d="M150 100m-50 0a50 50 0 1 1 50 50" stroke="#8B6BE0" stroke-width="4" stroke-dasharray="2 10"/></g><circle cx="150" cy="100" r="36" fill="#0E0A1F" stroke="#2B2233" stroke-width="4"/><g stroke="#2B2233" stroke-width="4"><circle cx="276" cy="64" r="16" fill="#E5484D"/><path d="M252 74l-30 12M256 88l-26 8M250 58l-26 6" stroke="#8B6BE0" stroke-linecap="round" stroke-dasharray="6 7"/></g><path d="M44 40l4 9 9 4-9 4-4 9-4-9-9-4 9-4z M280 150l3 6 6 3-6 3-3 6-3-6-6-3 6-3z" fill="#6A44D0"/><circle cx="60" cy="150" r="3" fill="#6A44D0"/><circle cx="240" cy="30" r="3" fill="#6A44D0"/></svg>`};
+ blackhole:`<svg viewBox="0 0 320 200"><defs><pattern id="db" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2" fill="#D7CDF0"/></pattern><radialGradient id="bh" cx=".5" cy=".5" r=".5"><stop offset=".45" stop-color="#0E0A1F"/><stop offset=".7" stop-color="#5B2DBB"/><stop offset="1" stop-color="#5B2DBB" stop-opacity="0"/></radialGradient></defs><rect width="320" height="200" fill="#ECE6F8"/><rect width="320" height="200" fill="url(#db)"/><circle cx="150" cy="100" r="78" fill="url(#bh)"/><g fill="none" stroke-linecap="round"><ellipse cx="150" cy="100" rx="96" ry="24" stroke="#F2A93B" stroke-width="7" transform="rotate(-14 150 100)"/><path d="M150 100m-50 0a50 50 0 1 1 50 50" stroke="#8B6BE0" stroke-width="4" stroke-dasharray="2 10"/></g><circle cx="150" cy="100" r="36" fill="#0E0A1F" stroke="#2B2233" stroke-width="4"/><g stroke="#2B2233" stroke-width="4"><circle cx="276" cy="64" r="16" fill="#E5484D"/><path d="M252 74l-30 12M256 88l-26 8M250 58l-26 6" stroke="#8B6BE0" stroke-linecap="round" stroke-dasharray="6 7"/></g><path d="M44 40l4 9 9 4-9 4-4 9-4-9-9-4 9-4z M280 150l3 6 6 3-6 3-3 6-3-6-6-3 6-3z" fill="#6A44D0"/><circle cx="60" cy="150" r="3" fill="#6A44D0"/><circle cx="240" cy="30" r="3" fill="#6A44D0"/></svg>`,
+ prism:`<svg viewBox="0 0 320 200"><defs><pattern id="dpr" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2" fill="#CDD8F6"/></pattern></defs><rect width="320" height="200" fill="#E6ECFB"/><rect width="320" height="200" fill="url(#dpr)"/><path d="M22 118L132 104" stroke="#2B2233" stroke-width="12" stroke-linecap="round"/><path d="M22 118L132 104" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/><g stroke-width="7" stroke-linecap="round" fill="none"><path d="M186 104L300 58" stroke="#E5484D"/><path d="M186 106L302 78" stroke="#F08C2E"/><path d="M186 108L304 98" stroke="#F5C542"/><path d="M186 110L304 118" stroke="#3FB871"/><path d="M186 112L302 138" stroke="#3B74E6"/><path d="M186 114L300 158" stroke="#7A4BD1"/></g><path d="M158 34L212 146H104Z" fill="#DCEBFF" stroke="#2B2233" stroke-width="4" stroke-linejoin="round"/><path d="M158 56L132 110" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity=".8"/><g transform="translate(20 140)"><rect width="78" height="48" rx="8" fill="#fff" stroke="#2B2233" stroke-width="3"/><g fill="#C9D4F5"><rect x="10" y="9" width="58" height="6" rx="3"/><rect x="10" y="20" width="58" height="6" rx="3"/><rect x="10" y="31" width="58" height="6" rx="3"/></g><path d="M8 6l16 14M24 6L8 20" stroke="#E5484D" stroke-width="4" stroke-linecap="round" transform="translate(44 4)"/><path d="M8 6l16 14M24 6L8 20" stroke="#E5484D" stroke-width="4" stroke-linecap="round" transform="translate(44 26)"/></g><path d="M262 170l3 7 7 3-7 3-3 7-3-7-7-3 7-3z M54 34l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#3B74E6"/></svg>`,
+ magnet:`<svg viewBox="0 0 320 200"><defs><pattern id="dmg" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2" fill="#CDD8F6"/></pattern></defs><rect width="320" height="200" fill="#E6ECFB"/><rect width="320" height="200" fill="url(#dmg)"/><g fill="none" stroke-linecap="round"><path d="M118 52v54a42 42 0 0 0 84 0V52" stroke="#2B2233" stroke-width="40"/><path d="M118 52v54a42 42 0 0 0 84 0V52" stroke="#E5484D" stroke-width="30"/></g><rect x="96" y="30" width="44" height="30" rx="4" fill="#D1D5DB" stroke="#2B2233" stroke-width="4"/><rect x="180" y="30" width="44" height="30" rx="4" fill="#D1D5DB" stroke="#2B2233" stroke-width="4"/><g fill="none" stroke="#3B74E6" stroke-width="3" stroke-dasharray="6 7" stroke-linecap="round"><path d="M118 28C130 4 190 4 202 28"/><path d="M110 26C118 -14 202 -14 210 26"/></g><circle cx="276" cy="112" r="17" fill="#3E8EF7" stroke="#2B2233" stroke-width="4"/><path d="M252 100h-24M252 112h-30M252 124h-24" stroke="#3B74E6" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 6"/><path d="M40 150l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#3B74E6"/></svg>`,
+ photo:`<svg viewBox="0 0 320 200"><defs><pattern id="dph" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2" fill="#C7E3CF"/></pattern></defs><rect width="320" height="200" fill="#E3F1E6"/><rect width="320" height="200" fill="url(#dph)"/><g stroke="#F2A93B" stroke-width="5" stroke-linecap="round"><path d="M262 18v14M262 92v14M222 62h14M288 62h14M234 34l10 10M280 80l10 10M234 90l10-10M280 44l10-10"/></g><circle cx="262" cy="62" r="24" fill="#F7C548" stroke="#2B2233" stroke-width="4"/><g stroke="#F2A93B" stroke-width="4" stroke-dasharray="6 7" stroke-linecap="round"><path d="M232 84L180 110"/><path d="M244 96L196 130"/></g><path d="M150 182C150 140 156 110 170 84" stroke="#2B2233" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M168 88C118 96 88 70 84 34C130 30 166 52 168 88Z" fill="#3FB871" stroke="#2B2233" stroke-width="4" stroke-linejoin="round"/><path d="M164 84C138 70 116 54 96 40" stroke="#2B7A4B" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M158 128C190 136 214 120 220 94C192 92 166 104 158 128Z" fill="#5CC98A" stroke="#2B2233" stroke-width="4" stroke-linejoin="round"/><g transform="translate(34 118) rotate(-8)"><rect width="46" height="60" rx="7" fill="#fff" stroke="#2B2233" stroke-width="3"/></g><g transform="translate(52 112) rotate(6)"><rect width="46" height="60" rx="7" fill="#fff" stroke="#2B2233" stroke-width="3"/></g><circle cx="98" cy="118" r="17" fill="#2F9E5B" stroke="#2B2233" stroke-width="3"/><text x="98" y="124" text-anchor="middle" font-family="Mitr,sans-serif" font-size="16" font-weight="600" fill="#fff">+2</text></svg>`,
+ meteor:`<svg viewBox="0 0 320 200"><defs><pattern id="dmt" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2" fill="#D7CDF0"/></pattern><linearGradient id="tail" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7C548" stop-opacity="0"/><stop offset="1" stop-color="#F08C2E"/></linearGradient></defs><rect width="320" height="200" fill="#ECE6F8"/><rect width="320" height="200" fill="url(#dmt)"/><g stroke="url(#tail)" stroke-linecap="round"><path d="M36 10L108 70" stroke-width="12"/><path d="M128 4L196 60" stroke-width="10"/><path d="M200 22L260 72" stroke-width="12"/><path d="M60 80L112 124" stroke-width="9"/></g><g fill="#B5651D" stroke="#2B2233" stroke-width="3.5"><circle cx="112" cy="74" r="13"/><circle cx="199" cy="63" r="10"/><circle cx="264" cy="76" r="13"/><circle cx="115" cy="127" r="9"/></g><path d="M20 186h280" stroke="#8B6BE0" stroke-width="4" stroke-linecap="round"/><g stroke="#2B2233" stroke-width="3.5"><circle cx="180" cy="168" r="13" fill="#E5484D"/><circle cx="222" cy="168" r="13" fill="#3E8EF7"/><circle cx="264" cy="168" r="13" fill="#2FA36B"/></g><path d="M160 148h-34m0 0l10-8m-10 8l10 8" stroke="#6A44D0" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="60" cy="162" r="18" fill="#D9434F" stroke="#2B2233" stroke-width="3"/><text x="60" y="168" text-anchor="middle" font-family="Mitr,sans-serif" font-size="16" font-weight="600" fill="#fff">−2</text></svg>`};
 const GIRAFFE=`<svg viewBox="0 0 40 52"><g stroke="#3A2405" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"><path d="M10 50V34c0-6 4-8 8-8h6V10" fill="none"/><path d="M8 50V34c0-8 5-11 11-11h3V9h6v17c0 3-2 5-5 5H18c-3 0-5 2-5 5v14z" fill="#F2B640"/><path d="M21 9c0-4 3-6 7-6 5 0 9 3 9 6s-3 4-6 4h-7c-2 0-3-2-3-4z" fill="#F2B640"/><path d="M24 3V0M28 3V0" /><circle cx="30" cy="7" r="1.1" fill="#3A2405"/></g><g fill="#B5651D"><circle cx="16" cy="38" r="2.2"/><circle cx="12" cy="44" r="1.8"/><circle cx="25" cy="18" r="1.6"/><circle cx="24" cy="25" r="1.9"/><circle cx="18" cy="31" r="1.6"/></g></svg>`;
 const COIL=`<svg viewBox="0 0 40 56"><g stroke="#11163A" stroke-width="2"><rect x="9" y="47" width="22" height="7" rx="2" fill="#6B7280"/><rect x="14" y="20" width="12" height="28" rx="3" fill="#C2783A"/><path d="M14 24h12M14 28h12M14 32h12M14 36h12M14 40h12M14 44h12" stroke="#7A4519" stroke-width="1.4"/><circle cx="20" cy="13" r="9" fill="#D1D5DB"/></g><path d="M6 2l6 7-4 1 6 7M34 2l-6 7 4 1-6 7" fill="none" stroke="#7FD1FF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 const EVENTS={
@@ -944,9 +952,11 @@ function skillBlock(p,id){
   if(p.blocked)return 'ถูกช็อตอยู่ เทิร์นนี้ใช้การ์ดไม่ได้';
   const s=SKILLS[id];
   if(p.usedSkill&&id!=='azoth')return 'เทิร์นนี้ใช้การ์ดสกิลไปแล้ว (ใช้ได้ 1 ใบต่อเทิร์น)';
-  if(!s.ph.includes(G.phase))return id==='telescope'?'ใช้ระหว่างตอบคำถามเท่านั้น':id==='catalyst'?'ใช้ได้หลังทอยลูกเต๋า ก่อนเดิน':'ตอนนี้ใช้การ์ดนี้ไม่ได้';
+  if(!s.ph.includes(G.phase))return (id==='telescope'||id==='prism')?'ใช้ระหว่างตอบคำถามเท่านั้น':id==='catalyst'?'ใช้ได้หลังทอยลูกเต๋า ก่อนเดิน':'ตอนนี้ใช้การ์ดนี้ไม่ได้';
   if(id==='sun'&&!others(p).some(o=>o.hand.length&&!shield(o,'sun')))return others(p).some(o=>o.hand.length)?'ศัตรูที่มีการ์ดมีภูมิคุ้มกันอยู่ ใช้ตอนนี้ไม่ได้':'ศัตรูไม่มีการ์ดให้เผา';
   if(['gravity','chem','pestilence'].includes(id)&&!others(p).some(o=>!shield(o,id))&&!(id==='pestilence'&&G.phase==='rolled'))return others(p).length?'ศัตรูทุกคนมีภูมิคุ้มกันหรือต้านทานการ์ดนี้อยู่':'ไม่มีศัตรูในสนาม';
+  if(id==='magnet'){const r=p.char==='tesla'?8:5;if(!others(p).some(o=>o.pos>p.pos&&o.pos-p.pos<=r))return `ไม่มีศัตรูอยู่ข้างหน้าในระยะ ${r} ช่อง`}
+  if(id==='meteor'&&!others(p).some(o=>!shield(o,'meteor')))return others(p).length?'ศัตรูทุกคนมีภูมิคุ้มกันหรือต้านทานการ์ดนี้อยู่':'ไม่มีศัตรูในสนาม';
   if(id==='blackhole'){const r=p.char==='kepler'?10:6;if(!others(p).some(o=>o.pos>p.pos&&o.pos-p.pos<=r&&!shield(o,'blackhole')))return `ไม่มีศัตรูอยู่ข้างหน้าในระยะ ${r} ช่อง`}
   if(id==='natural'&&(p.pos<2||p.pos>=FINISH)&&p.char!=='darwin')return 'วางยีราฟที่ช่องนี้ไม่ได้';
   return '';
@@ -966,7 +976,7 @@ function abilityBlock(p){
   if(p.char==='tesla'&&!others(p).some(o=>!shield(o,'tesla')))return 'ไม่มีศัตรูที่ช็อตได้';
   return '';
 }
-const KEYL={gravity:'Gravity',emc2:'E = mc²',pestilence:'Pestilence',immunity:'Immunity',natural:'ยีราฟ',azoth:'Azoth',chem:'Chemical Reaction',sun:'The Sun',telescope:'Telescope',catalyst:'Catalyst',blackhole:'Black Hole',tesla:'คลื่นไฟฟ้าของเทสลา',einstein:'บิดกาลอวกาศ',newton:'แรงโน้มถ่วงของนิวตัน'};
+const KEYL={meteor:'Meteor Shower',magnet:'Magnet',gravity:'Gravity',emc2:'E = mc²',pestilence:'Pestilence',immunity:'Immunity',natural:'ยีราฟ',azoth:'Azoth',chem:'Chemical Reaction',sun:'The Sun',telescope:'Telescope',catalyst:'Catalyst',blackhole:'Black Hole',tesla:'คลื่นไฟฟ้าของเทสลา',einstein:'บิดกาลอวกาศ',newton:'แรงโน้มถ่วงของนิวตัน'};
 const keyLabel=k=>KEYL[k]||k;
 /* returns '' when the effect lands on t, otherwise the reason it didn't */
 function guard(t,key){
@@ -1074,7 +1084,7 @@ function rollTotal(){const r=G.roll;if(!r)return 0;return Math.max(0,r.d[0]+r.d[
 
 /* =============== TURN FLOW =============== */
 function beginTurn(){
-  const p=cur();G.turnNo++;p.turns++;p.usedSkill=false;p.usedAbility=false;p.blocked=false;G.roll=null;G.extra=false;G.q=null;G.busy=false;G.prompt=null;
+  const p=cur();G.turnNo++;p.turns++;p.usedSkill=false;p.usedAbility=false;p.blocked=false;G.roll=null;G.extra=false;G.q=null;G.busy=false;G.bonusMove=0;G.prompt=null;
   if(p.status.immune)p.status.immune=false;
   if(p.status.shock>0){p.blocked=true;p.status.shock--}
   G.predict=null;G.phase='start';if(p.status.frozen>0)G.busy=true;
@@ -1136,7 +1146,7 @@ async function askQuestion(p,resume){
     log(`<b>${esc(p.name)}</b> ตอบถูก (${SUBJ[q[0]].th} · ${LEVEL[q[1]].th})`);
     const bonus=q[1]===3?1:q[1]===4?2:0;
     if(bonus){const n=drawCards(p,bonus);if(n)toast(`คำถาม${LEVEL[q[1]].th}! ได้การ์ดสกิล ${n} ใบ`)}
-    G.phase='preroll';G.q=null;render();save();
+    G.bonusMove=G.q.bonus||0;G.phase='preroll';G.q=null;render();save();
     if(p.char==='tesla'&&p.streak>=5&&!p.coilGot){p.coilGot=true;await placeCoil(p)}
   }else{
     p.wrong++;p.streak=0;log(`<b>${esc(p.name)}</b> ตอบผิด ไม่ได้ทอยลูกเต๋า (เฉลย: ${esc(q[3][0])})`);
@@ -1150,19 +1160,19 @@ async function placeCoil(p){
 }
 function questionModal(p){
   return new Promise(res=>{
-    const q=QS[G.q.i],L=LEVEL[q[1]];let done=false,left=L.t,paused=false,tm=null;
-    const tele=p.hand.includes('telescope');
+    const q=QS[G.q.i],L=LEVEL[q[1]];let done=false,left=G.q.left??L.t,paused=false,tm=null;const elim=G.q.elim||[];
+    const tele=p.hand.includes('telescope'),prism=p.hand.includes('prism')&&!elim.length;
     const s=openModal(`<div class="qcard"><div class="qhead"><span class="qno">${G.q.no}</span><span class="chip lvl" style="--lc:${L.c}">${L.th}</span>${chipSubj(q[0])}<span style="flex:1"></span><span class="tnum" style="font-family:var(--display);font-size:15px" id="qsec">${G.timer?left+' วิ':''}</span></div>
       <div class="qtext">${esc(q[2])}</div>${G.timer?'<div class="timer"><i id="qbar"></i></div>':''}
-      <div class="choices">${G.q.order.map((oi,k)=>`<button class="choice ${G.q.hint&&oi===0?'hintc':''}" data-c="${k}"><span class="k">${KEY[k]}</span><span>${esc(q[3][oi])}</span></button>`).join('')}</div></div>
-      <div class="row" style="justify-content:space-between"><span class="muted" style="font-size:13px">${esc(p.name)} · ตอบถูกได้ทอยลูกเต๋า${q[1]>=3?` · ข้อ${L.th} ตอบถูกได้การ์ดสกิล ${q[1]===3?1:2} ใบ`:''}</span>${tele?`<button class="btn small ghost" id="qTele">ใช้ Telescope</button>`:''}</div>`);
+      <div class="choices">${G.q.order.map((oi,k)=>`<button class="choice ${G.q.hint&&oi===0?'hintc':''}" data-c="${k}" ${elim.includes(k)?'disabled style="opacity:.35;text-decoration:line-through"':''}><span class="k">${KEY[k]}</span><span>${esc(q[3][oi])}</span></button>`).join('')}</div></div>
+      <div class="row" style="justify-content:space-between"><span class="muted" style="font-size:13px">${esc(p.name)} · ตอบถูกได้ทอยลูกเต๋า${q[1]>=3?` · ข้อ${L.th} ตอบถูกได้การ์ดสกิล ${q[1]===3?1:2} ใบ`:''}</span><span class="row" style="gap:6px">${prism?`<button class="btn small ghost" id="qPrism">ใช้ Prism</button>`:''}${tele?`<button class="btn small ghost" id="qTele">ใช้ Telescope</button>`:''}</span></div>`);
     const finish=async ok=>{if(done)return;done=true;clearInterval(tm);
-      const tbx=$('#qTele',s);if(tbx)tbx.hidden=true;const btns=$$('.choice',s);btns.forEach((b,k)=>{b.disabled=true;if(G.q.order[k]===0)b.classList.add('right')});
+      const tbx=$('#qTele',s);if(tbx)tbx.hidden=true;const pbx=$('#qPrism',s);if(pbx)pbx.hidden=true;const btns=$$('.choice',s);btns.forEach((b,k)=>{b.disabled=true;if(G.q.order[k]===0)b.classList.add('right')});
       if(ok===false&&finish.pick!=null)btns[finish.pick].classList.add('wrong');
       const fb=document.createElement('div');fb.style.cssText='text-align:center;font-family:var(--display);font-size:22px';fb.textContent=ok?'ถูกต้อง!':(finish.pick==null?'หมดเวลา!':'ยังไม่ถูก');fb.style.color=ok?'var(--good)':'var(--bad)';
       const cont=document.createElement('button');cont.className='btn primary block';cont.textContent=ok?'ไปทอยลูกเต๋า':'จบเทิร์นนี้';
       s.firstElementChild.append(fb,cont);cont.focus();cont.onclick=()=>{s.remove();res(ok)}};
-    s.addEventListener('click',e=>{const b=e.target.closest('[data-c]');if(!b||done||paused)return;finish.pick=+b.dataset.c;finish(G.q.order[+b.dataset.c]===0)});
+    s.addEventListener('click',e=>{const b=e.target.closest('[data-c]');if(!b||b.disabled||done||paused)return;finish.pick=+b.dataset.c;finish(G.q.order[+b.dataset.c]===0)});
     if(G.timer){const bar=$('#qbar',s),sec=$('#qsec',s);tm=setInterval(()=>{if(paused||done)return;left-=0.25;bar.style.transform=`scaleX(${Math.max(0,left/L.t)})`;sec.textContent=Math.ceil(Math.max(0,left))+' วิ';if(left<=0){finish.pick=null;finish(false)}},250)}
     const tb=$('#qTele',s);
     if(tb)tb.onclick=async()=>{if(done||paused)return;const why=skillBlock(p,'telescope');if(why)return toast(why);paused=true;
@@ -1172,8 +1182,18 @@ function questionModal(p){
       let ok=true;
       if(p.status.fake){p.status.fake=false;ok=false;await info('ข่าวปลอม!','<p style="margin:0">Telescope ไม่มีผล</p>')}
       else if(await curieCheck(p,'การ์ด Telescope'))ok=false;
-      if(ok){if(mode==='hint'){G.q.hint=true}else{G.qdeck.push(G.q.i);const ni=drawQ();G.q={i:ni,order:shuffle([0,1,2,3]),no:G.q.no,hint:false}}}
+      if(ok){if(mode==='hint'){G.q.hint=true;G.q.left=left}else{G.qdeck.push(G.q.i);const ni=drawQ();G.q={i:ni,order:shuffle([0,1,2,3]),no:G.q.no,hint:false,bonus:G.q.bonus}}}else G.q.left=left;
       done=true;clearInterval(tm);s.remove();render();save();
+      res(await questionModal(p));
+    };
+    const pb=$('#qPrism',s);
+    if(pb)pb.onclick=async()=>{if(done||paused)return;const why=skillBlock(p,'prism');if(why)return toast(why);paused=true;
+      p.hand.splice(p.hand.indexOf('prism'),1);G.discard.push('prism');p.usedSkill=true;log(`<b>${esc(p.name)}</b> ใช้การ์ด Prism`);
+      let ok=true;
+      if(p.status.fake){p.status.fake=false;ok=false;await info('ข่าวปลอม!','<p style="margin:0">Prism ไม่มีผล</p>')}
+      else if(await curieCheck(p,'การ์ด Prism'))ok=false;
+      if(ok){const wrong=G.q.order.map((oi,k)=>oi===0?-1:k).filter(k=>k>=0);G.q.elim=shuffle(wrong).slice(0,2);if(p.char==='newton')G.q.bonus=2}
+      G.q.left=left;done=true;clearInterval(tm);s.remove();render();save();
       res(await questionModal(p));
     };
   });
@@ -1188,7 +1208,7 @@ async function doRoll(p){
   const dice=$$('.die',s);dice.forEach(d=>d.classList.add('spin'));
   for(let k=0;k<10;k++){dice.forEach(d=>setDie(d,1+rnd(6)));await sleep(80)}
   const d=[1+rnd(6),1+rnd(6)];dice.forEach((el,i)=>{setDie(el,d[i]);el.classList.remove('spin')});
-  G.roll={d,mods:pest?[{l:'โรคระบาด',v:-pest}]:[],predict};
+  G.roll={d,mods:(pest?[{l:'โรคระบาด',v:-pest}]:[]).concat(G.bonusMove?[{l:'Prism + นิวตัน',v:G.bonusMove}]:[]),predict};G.bonusMove=0;
   $('#rt',s).textContent=`${d[0]} + ${d[1]} = ${d[0]+d[1]}`;await sleep(900);s.remove();
   G.busy=false;G.phase='rolled';log(`<b>${esc(p.name)}</b> ทอยได้ ${d[0]} + ${d[1]}`);
   if(predict){const ok=((d[0]+d[1])%2===0)===(predict==='even');toast(ok?'ทำนายธาตุถูก! เดินเพิ่ม 3 ช่อง':'ทำนายผิด ไม่ได้เดินเพิ่ม')}
@@ -1219,6 +1239,7 @@ async function useSkill(p,id){
     case 'natural':if(combo){prm.sq=await pickSquare('ยีราฟตัวที่ 2: เลือกช่องที่จะวาง',n=>n>1&&n<FINISH,p.pos);if(!prm.sq)return}break;
     case 'chem':{prm.t=await pickPlayer(p,()=>true,'Chemical Reaction: เลือกศัตรู','','chem');if(!prm.t)return;const n=await ask({title:'ให้ถอยหลังกี่ช่อง?',body:'<p style="margin:0">ทอยได้เลขคู่ ศัตรูถอย · เลขคี่ เราถอยเองแทน</p>',buttons:[1,2,3,4,5].map(x=>({l:x+' ช่อง',v:x,k:'primary'})).concat([{l:'ยกเลิก',v:'',k:'ghost'}])});if(!n)return;prm.n=+n;break}
     case 'sun':prm.t=await pickPlayer(p,o=>o.hand.length>0,'The Sun: เลือกศัตรูที่จะเผาการ์ด','ไม่มีศัตรูที่เผาการ์ดได้','sun');if(!prm.t)return;break;
+    case 'magnet':{const r=p.char==='tesla'?8:5;prm.t=await pickPlayer(p,o=>o.pos>p.pos&&o.pos-p.pos<=r,`Magnet: เลือกศัตรูข้างหน้าไม่เกิน ${r} ช่อง เราจะถูกดูดไปหา`);if(!prm.t)return;break}
     case 'blackhole':{const r=p.char==='kepler'?10:6;prm.t=await pickPlayer(p,o=>o.pos>p.pos&&o.pos-p.pos<=r,`Black Hole: เลือกศัตรูที่อยู่ข้างหน้าไม่เกิน ${r} ช่อง`,'','blackhole');if(!prm.t)return;break}
   }
   if(skillBlock(p,id))return;
@@ -1244,6 +1265,9 @@ async function applySkill(p,id,prm,combo){
     case 'sun':{if(!await hitMsg('sun'))break;const v=ONLINE()&&!isMine(t)?await askRemote(t,{kind:'sun'},30000,String(rnd(t.hand.length))):await ask({who:t,title:'The Sun: เลือกการ์ดที่จะให้เผา 1 ใบ',body:`<div class="hand">${t.hand.map((c,i)=>{const s=SKILLS[c];return `<button class="hcard s-${s.subj}" data-v="${i}"><div class="art" ${artStyle(c)}>${artHTML(c)}</div><b>${s.en}</b></button>`}).join('')}</div>`,buttons:[]});const lost=loseCards(t,[+v]);log(`<b>${esc(t.name)}</b> ถูกเผาการ์ด ${SKILLS[lost[0]].en}`);toast(`เผา ${SKILLS[lost[0]].en} ของ ${t.name}`);break}
     case 'catalyst':G.roll.mods.push({l:'Catalyst',v:combo?5:3});toast(`แต้มรวม +${combo?5:3}`);break;
     case 'blackhole':if(await hitMsg('blackhole')){await slide(t,p.pos);toast(`${t.name} ถูกดูดมาที่ช่อง ${p.pos}`)}break;
+    case 'magnet':{const to=t.pos;await slide(p,to);log(`<b>${esc(p.name)}</b> ถูกแม่เหล็กดูดไปช่อง ${to}`);toast(`ถูกดูดไปอยู่ช่อง ${to} กับ ${t.name}`);break}
+    case 'photo':{const n=drawCards(p,2);log(`<b>${esc(p.name)}</b> จั่วการ์ดเพิ่ม ${n} ใบ`);await info('การสังเคราะห์ด้วยแสง',`<p style="margin:0">${n?`จั่วการ์ดสกิลเพิ่ม ${n} ใบ`:'มือเต็มแล้ว จั่วเพิ่มไม่ได้'}</p>`);break}
+    case 'meteor':{const n=combo?3:2;const hitList=[],safe=[];for(const o of others(p)){const w=guard(o,'meteor');if(w){safe.push(w);continue}await pushBack(o,n);hitList.push(o.name)}log(`ฝนดาวตก! ${hitList.map(esc).join(', ')||'ไม่มีใคร'} ถอยหลัง ${n} ช่อง`);await info('ฝนดาวตก!',`<p style="margin:0">${hitList.length?esc(hitList.join(', '))+` ถอยหลัง ${n} ช่อง`:'ไม่มีใครโดน'}${safe.length?'<br><span class="muted">'+safe.map(esc).join('<br>')+'</span>':''}</p>`);break}
   }
 }
 function placeGiraffe(sq,p){if(sq<2||sq>=FINISH)return;G.giraffes=G.giraffes.filter(g=>g.sq!==sq);G.giraffes.push({sq,owner:p.id});if(G.giraffes.length>6)G.giraffes.shift();log(`<b>${esc(p.name)}</b> วางยีราฟที่ช่อง ${sq}`)}
@@ -1324,7 +1348,7 @@ function rulesModal(){
   <section><h4>ช่อง Event</h4>${evListHTML()}<p class="hint" style="margin:8px 0 0">Event ทำงานเมื่อผู้เล่นหยุดที่ช่องนั้นในเทิร์นของตัวเอง ถ้าถูกสกิลผลักไปหยุดจะไม่ทำงาน</p></section></div>`,buttons:[{l:'เข้าใจแล้ว',v:'',k:'primary'}]});
 }
 function galleryModal(tab='chars'){
-  const tabs=`<div class="tabs" role="tablist"><button role="tab" data-v="t:chars" aria-selected="${tab==='chars'}">ตัวละคร 10 ตัว</button><button role="tab" data-v="t:skills" aria-selected="${tab==='skills'}">การ์ดสกิล 11 ใบ</button><button role="tab" data-v="t:events" aria-selected="${tab==='events'}">ช่อง Event</button></div>`;
+  const tabs=`<div class="tabs" role="tablist"><button role="tab" data-v="t:chars" aria-selected="${tab==='chars'}">ตัวละคร 10 ตัว</button><button role="tab" data-v="t:skills" aria-selected="${tab==='skills'}">การ์ดสกิล ${Object.keys(SKILLS).length} ใบ</button><button role="tab" data-v="t:events" aria-selected="${tab==='events'}">ช่อง Event</button></div>`;
   let body='';
   if(tab==='chars')body=`<div class="cgrid">${CHARS.map(c=>`<button class="ccard s-${c.subj}" data-v="c:${c.id}"><div class="ph"><img src="${av(c.id)}" alt="" loading="lazy">${chipSubj(c.subj)}${c.isNew?'<span class="new-badge">ใหม่</span>':''}</div><div class="bd"><b>${c.name}</b><span>${c.ab} · ${c.uses<0?'ติดตัว':'ใช้ได้ '+c.uses+' ครั้ง'}</span></div></button>`).join('')}</div>`;
   else if(tab==='skills')body=`<div class="skills-grid">${Object.keys(SKILLS).map(id=>skillCardHTML(id)).join('')}</div>`;
@@ -1618,7 +1642,7 @@ function renderSpectator(el){
   const p=cur(),c=CH[p.char],me=myPlayer();el.style.setProperty('--pc',p.color);
   const doing={start:'กำลังเตรียมตัว',question:'กำลังตอบคำถาม',preroll:'ตอบถูก! กำลังจะทอยลูกเต๋า',rolled:'ทอยลูกเต๋าแล้ว',moving:'กำลังเดิน',end:'กำลังจะจบเทิร์น'}[G.phase]||'';
   let qb='';
-  if(G.phase==='question'&&G.q){const q=QS[G.q.i];qb=`<div class="qcard" style="padding:10px;gap:8px;border-width:4px"><div class="qhead">${chipSubj(q[0])}<span class="chip lvl" style="--lc:${LEVEL[q[1]].c}">${LEVEL[q[1]].th}</span></div><div class="qtext" style="font-size:15.5px;padding:8px">${esc(q[2])}</div><div class="choices">${G.q.order.map((oi,k)=>`<div class="choice" style="min-height:38px;font-size:14px;padding:6px 10px"><span class="k" style="width:24px;height:24px">${KEY[k]}</span><span>${esc(q[3][oi])}</span></div>`).join('')}</div></div>`}
+  if(G.phase==='question'&&G.q){const q=QS[G.q.i];qb=`<div class="qcard" style="padding:10px;gap:8px;border-width:4px"><div class="qhead">${chipSubj(q[0])}<span class="chip lvl" style="--lc:${LEVEL[q[1]].c}">${LEVEL[q[1]].th}</span></div><div class="qtext" style="font-size:15.5px;padding:8px">${esc(q[2])}</div><div class="choices">${G.q.order.map((oi,k)=>`<div class="choice" style="min-height:38px;font-size:14px;padding:6px 10px;${(G.q.elim||[]).includes(k)?'opacity:.35;text-decoration:line-through':''}"><span class="k" style="width:24px;height:24px">${KEY[k]}</span><span>${esc(q[3][oi])}</span></div>`).join('')}</div></div>`}
   let rb='';if(G.roll&&(G.phase==='rolled'||G.phase==='end'||G.phase==='moving')){const r=G.roll;rb=`<div class="rollbox"><div class="dice">${dieHTML(r.d[0])}${dieHTML(r.d[1])}</div><div><div class="sum tnum">${rollTotal()}</div><div class="mods">${r.d[0]} + ${r.d[1]}${rollMods().map(m=>` ${m.v>=0?'+':'−'} ${Math.abs(m.v)} ${m.l}`).join('')}</div></div></div>`}
   const wait=G.prompt?`<div class="hint" style="color:var(--gold2)">รอ ${esc(P(G.prompt.to).name)} ตัดสินใจ…</div>`:'';
   const idle=Date.now()-(G.at||0)>IDLE_MS;
