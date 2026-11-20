@@ -131,7 +131,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .pc .n{font-family:var(--display);font-size:14px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pc .m{font-size:12px;color:var(--muted);display:flex;gap:6px;flex-wrap:wrap;align-items:center}
 .st{display:inline-flex;align-items:center;gap:3px;font-size:11px;padding:0 6px;border-radius:99px;background:rgba(255,255,255,.1)}
-.st.frz{background:#2B5E8F}.st.shk{background:#6B4BC2}.st.imm{background:#1F7A4C}.st.fake{background:#8E2E44}.st.pest{background:#5F6B1E}.st.fin{background:var(--gold);color:var(--gold-ink)}
+.st.frz{background:#2B5E8F}.st.nuke{background:#A3411A}.st.shk{background:#6B4BC2}.st.imm{background:#1F7A4C}.st.fake{background:#8E2E44}.st.pest{background:#5F6B1E}.st.fin{background:var(--gold);color:var(--gold-ink)}
 
 .side{display:grid;gap:12px}
 .console{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px;display:grid;gap:12px;border-top:5px solid var(--pc)}
@@ -211,6 +211,10 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .prow{display:flex;gap:10px;align-items:center;text-align:left;background:var(--night2);border:1px solid var(--line);border-left:5px solid var(--pc);border-radius:12px;padding:8px 10px;min-height:52px}
 .prow img{width:38px;height:38px;border-radius:50%;object-fit:cover}
 .prow[disabled]{opacity:.4}
+.prow[aria-pressed="true"]{background:#3A3216;box-shadow:inset 0 0 0 2px var(--gold)}
+.prow .tick{flex:none;width:22px;height:22px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:13px;color:var(--gold-ink)}
+.prow[aria-pressed="true"] .tick{background:var(--gold);border-color:var(--gold)}
+.prow[aria-pressed="true"] .tick::after{content:'✓'}
 .sqgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(42px,1fr));gap:6px}
 .sqgrid button{min-height:40px;border-radius:9px;background:var(--cream2);color:#2A1B08;font-family:var(--display);font-size:14px;border:2px solid transparent}
 .sqgrid button.ev-g{background:#BFE8B4}.sqgrid button.ev-b{background:#F5B9CF}
@@ -373,7 +377,7 @@ tr:first-child td{color:var(--gold2)}
       <div class="pslots" id="lobbySeats"></div>
       <div class="mine" id="myEdit" hidden style="--mc:var(--gold)">
         <h4>ตัวละครของคุณ</h4>
-        <input id="lobbyName" maxlength="14" placeholder="ชื่อที่จะแสดงบนตัวหมาก" autocomplete="off" style="font:inherit;font-size:16px;padding:10px 12px;border-radius:11px;border:1px solid var(--line);background:var(--night);color:var(--ink)">
+        <input id="lobbyName" maxlength="24" placeholder="ชื่อที่จะแสดงบนตัวหมาก" autocomplete="off" style="font:inherit;font-size:16px;padding:10px 12px;border-radius:11px;border:1px solid var(--line);background:var(--night);color:var(--ink)">
         <div id="myPick"></div>
       </div>
       <div class="opt" id="lobbyCmodeOpt" hidden style="justify-content:space-between;flex-wrap:wrap"><b style="font-family:var(--display);font-weight:500">ตัวละคร</b><div class="seg" id="lobbyCmode"><button type="button" data-m="random">สุ่มให้</button><button type="button" data-m="pick">เลือกเอง</button></div></div>
@@ -706,6 +710,7 @@ const SKILLS={
  magnet:{no:'13',en:'Magnet',th:'แม่เหล็ก',subj:'p',text:'ดูดตัวเองไปอยู่ช่องเดียวกับศัตรูที่อยู่ข้างหน้าไม่เกิน 5 ช่อง',combo:['tesla','ระยะดูดไม่เกิน 8 ช่อง'],ph:GEN,isNew:1},
  photo:{no:'14',en:'Photosynthesis',th:'การสังเคราะห์ด้วยแสง',subj:'b',text:'จั่วการ์ดสกิลเพิ่ม 2 ใบ',ph:GEN,isNew:1},
  meteor:{no:'15',en:'Meteor Shower',th:'ฝนดาวตก',subj:'a',text:'ศัตรูทุกคนถอยหลัง 2 ช่อง',combo:['galileo','ศัตรูทุกคนถอยหลัง 3 ช่อง'],ph:GEN,isNew:1},
+ nuclear:{no:'☢',en:'Nuclear',th:'นิวเคลียร์',subj:'p',text:'เลือกศัตรู 1–3 คน ศัตรูที่โดนต้องหยุดเล่น 5 รอบ · การ์ดลับของ J. Robert Oppenheimer ถูกขโมย เผา หรือทิ้งไม่ได้',ph:GEN,secret:1},
 };
 const ART={
  catalyst:`<svg viewBox="0 0 320 200"><defs><pattern id="dc" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2" fill="#E7D3C3"/></pattern></defs><rect width="320" height="200" fill="#F4E7DD"/><rect width="320" height="200" fill="url(#dc)"/><g stroke="#2B2233" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"><path d="M42 84h46M30 104h56M46 124h36" stroke="#C0601C"/><path d="M138 34h44M145 34v44l-44 80a7 7 0 0 0 6 10h106a7 7 0 0 0 6-10l-44-80V34" fill="#fff"/><path d="M121 118h78l20 36a5 5 0 0 1-4 8H105a5 5 0 0 1-4-8z" fill="#B4500C"/><path d="M170 52l-26 50h20l-12 40 34-56h-20l14-34z" fill="#F7C548"/><g transform="rotate(14 262 104)"><rect x="236" y="78" width="52" height="52" rx="10" fill="#fff"/><circle cx="250" cy="92" r="5" fill="#2B2233" stroke="none"/><circle cx="262" cy="104" r="5" fill="#2B2233" stroke="none"/><circle cx="274" cy="116" r="5" fill="#2B2233" stroke="none"/></g><circle cx="288" cy="72" r="18" fill="#D9434F"/></g><text x="288" y="79" text-anchor="middle" font-family="Mitr,sans-serif" font-size="19" font-weight="600" fill="#fff">+3</text><path d="M60 40l4 9 9 4-9 4-4 9-4-9-9-4 9-4z M232 160l3 6 6 3-6 3-3 6-3-6-6-3 6-3z" fill="#C0601C"/></svg>`,
@@ -713,7 +718,8 @@ const ART={
  prism:`<svg viewBox="0 0 320 200"><defs><pattern id="dpr" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2" fill="#CDD8F6"/></pattern></defs><rect width="320" height="200" fill="#E6ECFB"/><rect width="320" height="200" fill="url(#dpr)"/><path d="M22 118L132 104" stroke="#2B2233" stroke-width="12" stroke-linecap="round"/><path d="M22 118L132 104" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/><g stroke-width="7" stroke-linecap="round" fill="none"><path d="M186 104L300 58" stroke="#E5484D"/><path d="M186 106L302 78" stroke="#F08C2E"/><path d="M186 108L304 98" stroke="#F5C542"/><path d="M186 110L304 118" stroke="#3FB871"/><path d="M186 112L302 138" stroke="#3B74E6"/><path d="M186 114L300 158" stroke="#7A4BD1"/></g><path d="M158 34L212 146H104Z" fill="#DCEBFF" stroke="#2B2233" stroke-width="4" stroke-linejoin="round"/><path d="M158 56L132 110" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" opacity=".8"/><g transform="translate(20 140)"><rect width="78" height="48" rx="8" fill="#fff" stroke="#2B2233" stroke-width="3"/><g fill="#C9D4F5"><rect x="10" y="9" width="58" height="6" rx="3"/><rect x="10" y="20" width="58" height="6" rx="3"/><rect x="10" y="31" width="58" height="6" rx="3"/></g><path d="M8 6l16 14M24 6L8 20" stroke="#E5484D" stroke-width="4" stroke-linecap="round" transform="translate(44 4)"/><path d="M8 6l16 14M24 6L8 20" stroke="#E5484D" stroke-width="4" stroke-linecap="round" transform="translate(44 26)"/></g><path d="M262 170l3 7 7 3-7 3-3 7-3-7-7-3 7-3z M54 34l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#3B74E6"/></svg>`,
  magnet:`<svg viewBox="0 0 320 200"><defs><pattern id="dmg" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2" fill="#CDD8F6"/></pattern></defs><rect width="320" height="200" fill="#E6ECFB"/><rect width="320" height="200" fill="url(#dmg)"/><g fill="none" stroke-linecap="round"><path d="M118 52v54a42 42 0 0 0 84 0V52" stroke="#2B2233" stroke-width="40"/><path d="M118 52v54a42 42 0 0 0 84 0V52" stroke="#E5484D" stroke-width="30"/></g><rect x="96" y="30" width="44" height="30" rx="4" fill="#D1D5DB" stroke="#2B2233" stroke-width="4"/><rect x="180" y="30" width="44" height="30" rx="4" fill="#D1D5DB" stroke="#2B2233" stroke-width="4"/><g fill="none" stroke="#3B74E6" stroke-width="3" stroke-dasharray="6 7" stroke-linecap="round"><path d="M118 28C130 4 190 4 202 28"/><path d="M110 26C118 -14 202 -14 210 26"/></g><circle cx="276" cy="112" r="17" fill="#3E8EF7" stroke="#2B2233" stroke-width="4"/><path d="M252 100h-24M252 112h-30M252 124h-24" stroke="#3B74E6" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 6"/><path d="M40 150l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#3B74E6"/></svg>`,
  photo:`<svg viewBox="0 0 320 200"><defs><pattern id="dph" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2" fill="#C7E3CF"/></pattern></defs><rect width="320" height="200" fill="#E3F1E6"/><rect width="320" height="200" fill="url(#dph)"/><g stroke="#F2A93B" stroke-width="5" stroke-linecap="round"><path d="M262 18v14M262 92v14M222 62h14M288 62h14M234 34l10 10M280 80l10 10M234 90l10-10M280 44l10-10"/></g><circle cx="262" cy="62" r="24" fill="#F7C548" stroke="#2B2233" stroke-width="4"/><g stroke="#F2A93B" stroke-width="4" stroke-dasharray="6 7" stroke-linecap="round"><path d="M232 84L180 110"/><path d="M244 96L196 130"/></g><path d="M150 182C150 140 156 110 170 84" stroke="#2B2233" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M168 88C118 96 88 70 84 34C130 30 166 52 168 88Z" fill="#3FB871" stroke="#2B2233" stroke-width="4" stroke-linejoin="round"/><path d="M164 84C138 70 116 54 96 40" stroke="#2B7A4B" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M158 128C190 136 214 120 220 94C192 92 166 104 158 128Z" fill="#5CC98A" stroke="#2B2233" stroke-width="4" stroke-linejoin="round"/><g transform="translate(34 118) rotate(-8)"><rect width="46" height="60" rx="7" fill="#fff" stroke="#2B2233" stroke-width="3"/></g><g transform="translate(52 112) rotate(6)"><rect width="46" height="60" rx="7" fill="#fff" stroke="#2B2233" stroke-width="3"/></g><circle cx="98" cy="118" r="17" fill="#2F9E5B" stroke="#2B2233" stroke-width="3"/><text x="98" y="124" text-anchor="middle" font-family="Mitr,sans-serif" font-size="16" font-weight="600" fill="#fff">+2</text></svg>`,
- meteor:`<svg viewBox="0 0 320 200"><defs><pattern id="dmt" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2" fill="#D7CDF0"/></pattern><linearGradient id="tail" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7C548" stop-opacity="0"/><stop offset="1" stop-color="#F08C2E"/></linearGradient></defs><rect width="320" height="200" fill="#ECE6F8"/><rect width="320" height="200" fill="url(#dmt)"/><g stroke="url(#tail)" stroke-linecap="round"><path d="M36 10L108 70" stroke-width="12"/><path d="M128 4L196 60" stroke-width="10"/><path d="M200 22L260 72" stroke-width="12"/><path d="M60 80L112 124" stroke-width="9"/></g><g fill="#B5651D" stroke="#2B2233" stroke-width="3.5"><circle cx="112" cy="74" r="13"/><circle cx="199" cy="63" r="10"/><circle cx="264" cy="76" r="13"/><circle cx="115" cy="127" r="9"/></g><path d="M20 186h280" stroke="#8B6BE0" stroke-width="4" stroke-linecap="round"/><g stroke="#2B2233" stroke-width="3.5"><circle cx="180" cy="168" r="13" fill="#E5484D"/><circle cx="222" cy="168" r="13" fill="#3E8EF7"/><circle cx="264" cy="168" r="13" fill="#2FA36B"/></g><path d="M160 148h-34m0 0l10-8m-10 8l10 8" stroke="#6A44D0" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="60" cy="162" r="18" fill="#D9434F" stroke="#2B2233" stroke-width="3"/><text x="60" y="168" text-anchor="middle" font-family="Mitr,sans-serif" font-size="16" font-weight="600" fill="#fff">−2</text></svg>`};
+ meteor:`<svg viewBox="0 0 320 200"><defs><pattern id="dmt" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2" fill="#D7CDF0"/></pattern><linearGradient id="tail" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7C548" stop-opacity="0"/><stop offset="1" stop-color="#F08C2E"/></linearGradient></defs><rect width="320" height="200" fill="#ECE6F8"/><rect width="320" height="200" fill="url(#dmt)"/><g stroke="url(#tail)" stroke-linecap="round"><path d="M36 10L108 70" stroke-width="12"/><path d="M128 4L196 60" stroke-width="10"/><path d="M200 22L260 72" stroke-width="12"/><path d="M60 80L112 124" stroke-width="9"/></g><g fill="#B5651D" stroke="#2B2233" stroke-width="3.5"><circle cx="112" cy="74" r="13"/><circle cx="199" cy="63" r="10"/><circle cx="264" cy="76" r="13"/><circle cx="115" cy="127" r="9"/></g><path d="M20 186h280" stroke="#8B6BE0" stroke-width="4" stroke-linecap="round"/><g stroke="#2B2233" stroke-width="3.5"><circle cx="180" cy="168" r="13" fill="#E5484D"/><circle cx="222" cy="168" r="13" fill="#3E8EF7"/><circle cx="264" cy="168" r="13" fill="#2FA36B"/></g><path d="M160 148h-34m0 0l10-8m-10 8l10 8" stroke="#6A44D0" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="60" cy="162" r="18" fill="#D9434F" stroke="#2B2233" stroke-width="3"/><text x="60" y="168" text-anchor="middle" font-family="Mitr,sans-serif" font-size="16" font-weight="600" fill="#fff">−2</text></svg>`,
+ nuclear:`<svg viewBox="0 0 320 200"><defs><pattern id="dnu" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2" fill="#CDD8F6"/></pattern><radialGradient id="nug" cx=".5" cy=".5" r=".5"><stop offset=".5" stop-color="#F7C548"/><stop offset="1" stop-color="#F7C548" stop-opacity="0"/></radialGradient></defs><rect width="320" height="200" fill="#E6ECFB"/><rect width="320" height="200" fill="url(#dnu)"/><circle cx="160" cy="98" r="96" fill="url(#nug)" opacity=".75"/><g fill="none" stroke="#3B74E6" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="3 9"><ellipse cx="160" cy="98" rx="128" ry="30" transform="rotate(-16 160 98)"/><ellipse cx="160" cy="98" rx="128" ry="30" transform="rotate(16 160 98)"/></g><circle cx="160" cy="98" r="64" fill="#F7C548" stroke="#2B2233" stroke-width="5"/><path d="M167.5 111.0L185.0 141.3A50 50 0 0 1 135.0 141.3L152.5 111.0A15 15 0 0 0 167.5 111.0ZM145.0 98.0L110.0 98.0A50 50 0 0 1 135.0 54.7L152.5 85.0A15 15 0 0 0 145.0 98.0ZM167.5 85.0L185.0 54.7A50 50 0 0 1 210.0 98.0L175.0 98.0A15 15 0 0 0 167.5 85.0Z" fill="#2B2233"/><circle cx="160" cy="98" r="10" fill="#2B2233"/><g stroke="#2B2233" stroke-width="3"><circle cx="40" cy="168" r="13" fill="#E5484D"/><circle cx="76" cy="168" r="13" fill="#3E8EF7"/><circle cx="112" cy="168" r="13" fill="#2FA36B"/></g><g fill="#fff"><rect x="35" y="162" width="3.5" height="12" rx="1"/><rect x="41.5" y="162" width="3.5" height="12" rx="1"/><rect x="71" y="162" width="3.5" height="12" rx="1"/><rect x="77.5" y="162" width="3.5" height="12" rx="1"/><rect x="107" y="162" width="3.5" height="12" rx="1"/><rect x="113.5" y="162" width="3.5" height="12" rx="1"/></g><circle cx="276" cy="160" r="22" fill="#D9434F" stroke="#2B2233" stroke-width="3"/><text x="276" y="167" text-anchor="middle" font-family="Mitr,sans-serif" font-size="19" font-weight="600" fill="#fff">×5</text><path d="M44 34l3 7 7 3-7 3-3 7-3-7-7-3 7-3z M282 34l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#3B74E6"/></svg>`};
 const GIRAFFE=`<svg viewBox="0 0 40 52"><g stroke="#3A2405" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"><path d="M10 50V34c0-6 4-8 8-8h6V10" fill="none"/><path d="M8 50V34c0-8 5-11 11-11h3V9h6v17c0 3-2 5-5 5H18c-3 0-5 2-5 5v14z" fill="#F2B640"/><path d="M21 9c0-4 3-6 7-6 5 0 9 3 9 6s-3 4-6 4h-7c-2 0-3-2-3-4z" fill="#F2B640"/><path d="M24 3V0M28 3V0" /><circle cx="30" cy="7" r="1.1" fill="#3A2405"/></g><g fill="#B5651D"><circle cx="16" cy="38" r="2.2"/><circle cx="12" cy="44" r="1.8"/><circle cx="25" cy="18" r="1.6"/><circle cx="24" cy="25" r="1.9"/><circle cx="18" cy="31" r="1.6"/></g></svg>`;
 const COIL=`<svg viewBox="0 0 40 56"><g stroke="#11163A" stroke-width="2"><rect x="9" y="47" width="22" height="7" rx="2" fill="#6B7280"/><rect x="14" y="20" width="12" height="28" rx="3" fill="#C2783A"/><path d="M14 24h12M14 28h12M14 32h12M14 36h12M14 40h12M14 44h12" stroke="#7A4519" stroke-width="1.4"/><circle cx="20" cy="13" r="9" fill="#D1D5DB"/></g><path d="M6 2l6 7-4 1 6 7M34 2l-6 7 4 1-6 7" fill="none" stroke="#7FD1FF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 const EVENTS={
@@ -731,7 +737,10 @@ const EVENTS={
  65:{t:'ปัญญาประดิษฐ์ AI',era:'ค.ศ. 2020',d:'จั่วการ์ดเพิ่ม 1 ใบ',good:1},
  68:{t:'ข่าวปลอม!',era:'ยุคโซเชียลมีเดีย',d:'สกิลใบต่อไปที่คุณใช้ ไม่ได้ผล',good:0},
  73:{t:'ภัยไซเบอร์!',era:'ยุคดิจิทัล',d:'ถูกแฮก! ทิ้งสกิล 1 ใบ และถอย 5 ช่อง',good:0}};
-const HAND_MAX=6, START_CARDS=4;
+const HAND_MAX=10, START_CARDS=4;
+const OPPIE=n=>String(n||'').toLowerCase().replace(/[^a-z]/g,'')==='jrobertoppenheimer';
+const keepCard=c=>!!(SKILLS[c]&&SKILLS[c].secret);
+const freeIdx=p=>p.hand.map((_,i)=>i).filter(i=>!keepCard(p.hand[i]));
 
 /* =============== UTIL =============== */
 const $=(s,r=document)=>r.querySelector(s);
@@ -766,13 +775,13 @@ function save(){if(ONLINE())return netSave(false);if(G&&G.phase!=='over')store.s
 function saveNow(){if(ONLINE())return netSave(true);save()}
 
 function newGame(defs,timer){
-  const deck=[];for(const k of Object.keys(SKILLS))for(let i=0;i<3;i++)deck.push(k);
+  const deck=[];for(const k of Object.keys(SKILLS))if(!SKILLS[k].secret)for(let i=0;i<3;i++)deck.push(k);
   G={v:1,gid:Math.random().toString(36).slice(2,9),rev:0,at:Date.now(),prompt:null,timer,players:defs.map((d,i)=>({id:i,seat:d.seat??i,name:d.name,char:d.char,color:PCOL[d.seat??i],pos:1,hand:[],uses:CH[d.char].uses,
-     status:{frozen:0,shock:0,immune:false,fake:false,pest:0},darwinSeen:[],streak:0,coilGot:false,visited:[1],turns:0,correct:0,wrong:0,
+     status:{frozen:0,shock:0,immune:false,fake:false,pest:0,nuke:false},darwinSeen:[],streak:0,coilGot:false,visited:[1],turns:0,correct:0,wrong:0,
      finished:false,finishTurn:null,finishMs:null,rank:null,usedSkill:false,usedAbility:false,blocked:false,lastCancel:-1})),
      order:shuffle(defs.map((_,i)=>i)),cur:0,phase:'start',deck:shuffle(deck),discard:[],qdeck:shuffle(QS.map((_,i)=>i)),
      giraffes:[],coil:null,turnNo:0,startedAt:Date.now(),log:[],q:null,roll:null,extra:false,finishCount:0,firstDone:false};
-  for(const p of G.players)drawCards(p,START_CARDS,true);
+  for(const p of G.players){drawCards(p,START_CARDS,true);if(OPPIE(p.name)){p.hand.push('nuclear');log(`☢ <b>${esc(p.name)}</b> ได้รับการ์ดลับ Nuclear`)}}
 }
 
 /* =============== SCREENS =============== */
@@ -796,7 +805,7 @@ function renderSetup(){
   $$('#cmode button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m===S.cmode));$('#bRandChars').hidden=S.cmode==='random';
   $('#pslots').innerHTML=S.players.slice(0,S.n).map((p,i)=>{const c=p.char&&CH[p.char];return `<div class="pslot" style="--pc:${PCOL[i]}">
     <span class="num">${i+1}</span>
-    <input id="pname${i}" maxlength="14" placeholder="ชื่อผู้เล่น ${i+1}" value="${esc(p.name)}" autocomplete="off">
+    <input id="pname${i}" maxlength="24" placeholder="ชื่อผู้เล่น ${i+1}" value="${esc(p.name)}" autocomplete="off">
     ${S.cmode==='random'?'<span class="pick" style="border-style:solid"><span class="nm" style="padding-left:6px">สุ่มตอนเริ่มเกม</span></span>':`<button class="pick ${c?'s-'+c.subj:''}" data-pick="${i}" type="button">${c?`<img src="${av(c.id)}" alt=""><span class="nm">${c.name}<br><span class="muted" style="font-size:12px">${c.ab}</span></span>`:'<span class="nm" style="padding-left:6px">เลือกตัวละคร</span>'}</button>`}</div>`}).join('');
   $('#optTimer').checked=S.timer;
 }
@@ -857,6 +866,17 @@ async function pickPlayer(p,filter,title,emptyMsg,key){
   const v=await ask({title,body:`<div class="plist">${list.map(o=>{const can=ok.includes(o);return `<button class="prow" style="--pc:${o.color}" data-v="${o.id}" ${can?'':'disabled'}><img src="${av(o.char)}" alt=""><div style="flex:1;min-width:0"><b style="font-family:var(--display);font-weight:500">${esc(o.name)}</b><div class="muted" style="font-size:12.5px">${CH[o.char].name} · ช่อง ${o.pos} · การ์ด ${o.hand.length} ใบ</div>${shield(o,key)?`<div style="font-size:12.5px;color:#FFB3C0">${shield(o,key)} · ใช้กับคนนี้ไม่ได้</div>`:''}</div></button>`}).join('')}</div>`,buttons:[{l:'ยกเลิก',v:'',k:'ghost'}]});
   return v===''?null:P(+v);
 }
+function pickPlayers(p,max,title,key){
+  const list=others(p);const ok=list.filter(o=>!shield(o,key));
+  if(!ok.length){toast('ไม่มีศัตรูที่เลือกได้');return Promise.resolve(null)}
+  return new Promise(res=>{const sel=new Set();
+    const s=openModal(`<h3>${title}</h3><p class="muted" style="margin:0 0 10px;font-size:13px">แตะเพื่อเลือก ได้สูงสุด ${Math.min(max,ok.length)} คน</p><div class="plist">${list.map(o=>{const can=ok.includes(o);return `<button class="prow" style="--pc:${o.color}" data-t="${o.id}" aria-pressed="false" ${can?'':'disabled'}><img src="${av(o.char)}" alt=""><div style="flex:1;min-width:0"><b style="font-family:var(--display);font-weight:500">${esc(o.name)}</b><div class="muted" style="font-size:12.5px">${CH[o.char].name} · ช่อง ${o.pos}</div>${shield(o,key)?`<div style="font-size:12.5px;color:#FFB3C0">${shield(o,key)} · ใช้กับคนนี้ไม่ได้</div>`:''}</div><span class="tick" aria-hidden="true"></span></button>`}).join('')}</div><div class="btns"><button class="btn primary" data-v="ok" disabled>ใช้การ์ด</button><button class="btn ghost" data-v="">ยกเลิก</button></div>`);
+    const go=s.querySelector('[data-v="ok"]');
+    s.addEventListener('click',e=>{const t=e.target.closest('[data-t]');
+      if(t){if(t.disabled)return;const id=+t.dataset.t;if(sel.has(id))sel.delete(id);else if(sel.size<max)sel.add(id);else return toast(`เลือกได้สูงสุด ${max} คน`);t.setAttribute('aria-pressed',String(sel.has(id)));go.disabled=!sel.size;go.textContent=sel.size?`ใช้กับ ${sel.size} คน`:'ใช้การ์ด';return}
+      const b=e.target.closest('[data-v]');if(!b||b.disabled)return;s.remove();res(b.dataset.v==='ok'?[...sel].map(P):null)});
+  });
+}
 async function pickSquare(title,allowed,mine){
   const v=await ask({title,body:`<div class="sqgrid">${Array.from({length:75},(_,i)=>i+1).map(n=>{const ev=EVENTS[n];return `<button data-v="${n}" class="${ev?(ev.good?'ev-g':'ev-b'):''} ${n===mine?'me':''}" ${allowed(n)?'':'disabled'}>${n}</button>`}).join('')}</div>`,buttons:[{l:'ยกเลิก',v:'',k:'ghost'}]});
   return v===''?null:+v;
@@ -889,7 +909,7 @@ function followToken(p,smooth=true){if(zoom<=1)return;const w=$('#boardwrap');co
 $('#bZoom').onclick=()=>{zoom=zoom>1?1:2;render()};
 function statusChips(o){const s=o.status,c=[];
   if(o.finished)c.push(`<span class="st fin">ถึงเส้นชัย อันดับ ${o.rank}</span>`);
-  if(s.frozen)c.push('<span class="st frz">แช่แข็ง</span>');
+  if(s.frozen)c.push(s.nuke?`<span class="st nuke">☢ หยุด ${s.frozen} รอบ</span>`:'<span class="st frz">แช่แข็ง</span>');
   if(s.shock||(o.blocked&&o.id===cur().id))c.push('<span class="st shk">ถูกช็อต</span>');
   if(s.immune)c.push('<span class="st imm">ภูมิคุ้มกัน</span>');
   if(s.fake)c.push('<span class="st fake">ข่าวปลอม</span>');
@@ -936,7 +956,7 @@ function renderLog(){$('#log').innerHTML=G.log.slice(0,40).map(l=>`<li>${safeH(l
 setInterval(()=>{if(G&&G.phase!=='over'&&!$('#s-game').hidden){$('#clock').textContent='เวลา '+fmtTime(Date.now()-G.startedAt);if(ONLINE()&&!isMine(cur())&&!NET.idleShown&&Date.now()-(G.at||0)>IDLE_MS){NET.idleShown=true;renderConsole()}}},1000);
 
 function skillCardHTML(id,owner){const s=SKILLS[id];const combo=s.combo;const active=combo&&owner&&owner.char===combo[0];
-  return `<div class="skill s-${s.subj}"><div class="top"><span class="chip light">${ICON[s.subj]}${SUBJ[s.subj].th}</span>${s.isNew?'<span class="newtag">การ์ดใหม่</span>':''}<span class="no">${s.no}</span></div>
+  return `<div class="skill s-${s.subj}"><div class="top"><span class="chip light">${ICON[s.subj]}${SUBJ[s.subj].th}</span>${s.isNew?'<span class="newtag">การ์ดใหม่</span>':''}${s.secret?'<span class="newtag">การ์ดลับ</span>':''}<span class="no">${s.no}</span></div>
   <div class="art" ${artStyle(id)}>${artHTML(id)}</div><h4>${s.en}</h4><div class="th">${s.th}</div><p>${s.text}</p>
   ${combo?`<div class="combo" style="${active?'outline:2px solid var(--sc)':''}"><b>✦ คอมโบ · ใช้กับ ${CH[combo[0]].name}${active?' (คุณได้คอมโบนี้!)':''}</b>${combo[1]}</div>`:''}</div>`}
 async function cardDetail(p,i){const id=p.hand[i];const why=skillBlock(p,id);
@@ -953,9 +973,10 @@ function skillBlock(p,id){
   const s=SKILLS[id];
   if(p.usedSkill&&id!=='azoth')return 'เทิร์นนี้ใช้การ์ดสกิลไปแล้ว (ใช้ได้ 1 ใบต่อเทิร์น)';
   if(!s.ph.includes(G.phase))return (id==='telescope'||id==='prism')?'ใช้ระหว่างตอบคำถามเท่านั้น':id==='catalyst'?'ใช้ได้หลังทอยลูกเต๋า ก่อนเดิน':'ตอนนี้ใช้การ์ดนี้ไม่ได้';
-  if(id==='sun'&&!others(p).some(o=>o.hand.length&&!shield(o,'sun')))return others(p).some(o=>o.hand.length)?'ศัตรูที่มีการ์ดมีภูมิคุ้มกันอยู่ ใช้ตอนนี้ไม่ได้':'ศัตรูไม่มีการ์ดให้เผา';
+  if(id==='sun'&&!others(p).some(o=>freeIdx(o).length&&!shield(o,'sun')))return others(p).some(o=>freeIdx(o).length)?'ศัตรูที่มีการ์ดมีภูมิคุ้มกันอยู่ ใช้ตอนนี้ไม่ได้':'ศัตรูไม่มีการ์ดให้เผา';
   if(['gravity','chem','pestilence'].includes(id)&&!others(p).some(o=>!shield(o,id))&&!(id==='pestilence'&&G.phase==='rolled'))return others(p).length?'ศัตรูทุกคนมีภูมิคุ้มกันหรือต้านทานการ์ดนี้อยู่':'ไม่มีศัตรูในสนาม';
   if(id==='magnet'){const r=p.char==='tesla'?8:5;if(!others(p).some(o=>o.pos>p.pos&&o.pos-p.pos<=r))return `ไม่มีศัตรูอยู่ข้างหน้าในระยะ ${r} ช่อง`}
+  if(id==='nuclear'&&!others(p).some(o=>!shield(o,'nuclear')))return others(p).length?'ศัตรูทุกคนมีภูมิคุ้มกันหรือต้านทานการ์ดนี้อยู่':'ไม่มีศัตรูในสนาม';
   if(id==='meteor'&&!others(p).some(o=>!shield(o,'meteor')))return others(p).length?'ศัตรูทุกคนมีภูมิคุ้มกันหรือต้านทานการ์ดนี้อยู่':'ไม่มีศัตรูในสนาม';
   if(id==='blackhole'){const r=p.char==='kepler'?10:6;if(!others(p).some(o=>o.pos>p.pos&&o.pos-p.pos<=r&&!shield(o,'blackhole')))return `ไม่มีศัตรูอยู่ข้างหน้าในระยะ ${r} ช่อง`}
   if(id==='natural'&&(p.pos<2||p.pos>=FINISH)&&p.char!=='darwin')return 'วางยีราฟที่ช่องนี้ไม่ได้';
@@ -972,11 +993,11 @@ function abilityBlock(p){
   if(p.usedAbility)return 'เทิร์นนี้ใช้พลังไปแล้ว (ใช้ได้ 1 ครั้งต่อเทิร์น)';
   if(!c.ph.includes(G.phase))return {mendeleev:'ใช้ได้หลังตอบคำถามถูก ก่อนทอยลูกเต๋า',kepler:'ใช้ได้หลังทอยลูกเต๋า ก่อนเดิน'}[p.char]||'ตอนนี้ใช้พลังไม่ได้';
   if(p.char==='einstein'&&!others(p).some(o=>Math.abs(o.pos-p.pos)<=8&&o.pos!==p.pos&&!shield(o,'einstein')))return 'ไม่มีศัตรูอยู่ห่างไม่เกิน 8 ช่อง';
-  if(p.char==='newton'&&!others(p).some(o=>o.hand.length&&!shield(o,'newton')))return 'ไม่มีศัตรูที่ดึงการ์ดได้';
+  if(p.char==='newton'&&!others(p).some(o=>freeIdx(o).length&&!shield(o,'newton')))return 'ไม่มีศัตรูที่ดึงการ์ดได้';
   if(p.char==='tesla'&&!others(p).some(o=>!shield(o,'tesla')))return 'ไม่มีศัตรูที่ช็อตได้';
   return '';
 }
-const KEYL={meteor:'Meteor Shower',magnet:'Magnet',gravity:'Gravity',emc2:'E = mc²',pestilence:'Pestilence',immunity:'Immunity',natural:'ยีราฟ',azoth:'Azoth',chem:'Chemical Reaction',sun:'The Sun',telescope:'Telescope',catalyst:'Catalyst',blackhole:'Black Hole',tesla:'คลื่นไฟฟ้าของเทสลา',einstein:'บิดกาลอวกาศ',newton:'แรงโน้มถ่วงของนิวตัน'};
+const KEYL={nuclear:'Nuclear',meteor:'Meteor Shower',magnet:'Magnet',gravity:'Gravity',emc2:'E = mc²',pestilence:'Pestilence',immunity:'Immunity',natural:'ยีราฟ',azoth:'Azoth',chem:'Chemical Reaction',sun:'The Sun',telescope:'Telescope',catalyst:'Catalyst',blackhole:'Black Hole',tesla:'คลื่นไฟฟ้าของเทสลา',einstein:'บิดกาลอวกาศ',newton:'แรงโน้มถ่วงของนิวตัน'};
 const keyLabel=k=>KEYL[k]||k;
 /* returns '' when the effect lands on t, otherwise the reason it didn't */
 function guard(t,key){
@@ -998,7 +1019,7 @@ async function curieCheck(actor,label){
 function drawOne(exclude){if(!G.deck.length){G.deck=shuffle(G.discard);G.discard=[]}if(!G.deck.length)return null;let i=G.deck.length-1;if(exclude){const j=G.deck.findLastIndex(x=>x!==exclude);if(j<0)return null;i=j}return G.deck.splice(i,1)[0]}
 function drawCards(p,n,silent){let got=0;for(let k=0;k<n;k++){if(p.hand.length>=HAND_MAX){if(!silent)toast(`${p.name} มีการ์ดเต็มมือ (${HAND_MAX} ใบ)`);break}const c=drawOne();if(!c)break;p.hand.push(c);got++}return got}
 function loseCards(p,idxs,why){
-  const lost=[];idxs.sort((a,b)=>b-a).forEach(i=>{if(p.hand[i]){lost.push(p.hand[i]);G.discard.push(p.hand[i]);p.hand.splice(i,1)}});
+  const lost=[];idxs.sort((a,b)=>b-a).forEach(i=>{if(p.hand[i]&&!keepCard(p.hand[i])){lost.push(p.hand[i]);G.discard.push(p.hand[i]);p.hand.splice(i,1)}});
   if(lost.length)lavoisier(p);
   return lost;
 }
@@ -1049,22 +1070,22 @@ async function resolveEvent(p,depth=0){
     case 22:await walk(p,9,{depth:depth+1});break;
     case 14:p.status.frozen=1;break;
     case 29:await silkRoad(p);break;
-    case 36:{const n=p.hand.length;if(n){loseCards(p,p.hand.map((_,i)=>i));toast(`${p.name} ทิ้งการ์ด ${n} ใบ`)}else toast('ไม่มีการ์ดให้ทิ้ง');break}
+    case 36:{const lost=loseCards(p,freeIdx(p));if(lost.length)toast(`${p.name} ทิ้งการ์ด ${lost.length} ใบ`);else toast('ไม่มีการ์ดให้ทิ้ง');break}
     case 40:{const s=await rollModal('เครื่องจักรไอน้ำ! ทอย 2 ครั้ง',2);await walk(p,s,{depth:depth+1});break}
     case 45:case 52:case 65:if(drawCards(p,1))toast(`${p.name} จั่วการ์ดเพิ่ม 1 ใบ`);break;
     case 50:for(const o of others(p)){if(o.status.immune){toast(`${o.name} มีภูมิคุ้มกัน`);continue}await pushBack(o,3)}break;
     case 62:{const act=G.players.filter(o=>!o.finished);const top=Math.max(...act.map(o=>o.pos));for(const o of act.filter(o=>o.pos===top)){if(o.status.immune){toast(`${o.name} มีภูมิคุ้มกัน`);continue}log(`<b>${esc(o.name)}</b> นำอยู่ ถอย 6 ช่อง`);await pushBack(o,6)}break}
     case 68:p.status.fake=true;break;
-    case 73:{if(p.hand.length)loseCards(p,[rnd(p.hand.length)]);await pushBack(p,5);await resolveEvent(p,depth+1);break}
+    case 73:{const f=freeIdx(p);if(f.length)loseCards(p,[f[rnd(f.length)]]);await pushBack(p,5);await resolveEvent(p,depth+1);break}
   }
   render();
 }
 async function silkRoad(p){
-  if(!p.hand.length){toast('ไม่มีการ์ดให้แลก');return}
-  const t=await pickPlayer(p,o=>o.hand.length>0,'เส้นทางสายไหม: เลือกผู้เล่นที่จะแลกการ์ดด้วย','ไม่มีผู้เล่นคนอื่นที่มีการ์ดให้แลก');
+  if(!freeIdx(p).length){toast('ไม่มีการ์ดให้แลก');return}
+  const t=await pickPlayer(p,o=>freeIdx(o).length>0,'เส้นทางสายไหม: เลือกผู้เล่นที่จะแลกการ์ดด้วย','ไม่มีผู้เล่นคนอื่นที่มีการ์ดให้แลก');
   if(!t)return;
-  const v=await ask({title:'เลือกการ์ดของคุณที่จะให้ไป',body:`<div class="hand">${p.hand.map((id,i)=>{const s=SKILLS[id];return `<button class="hcard s-${s.subj}" data-v="${i}"><div class="art" ${artStyle(id)}>${artHTML(id)}</div><b>${s.en}</b></button>`}).join('')}</div>`,buttons:[]});
-  const give=p.hand.splice(+v,1)[0];const j=rnd(t.hand.length);const get=t.hand.splice(j,1)[0];p.hand.push(get);t.hand.push(give);
+  const v=await ask({title:'เลือกการ์ดของคุณที่จะให้ไป',body:`<div class="hand">${p.hand.map((id,i)=>{const s=SKILLS[id];return `<button class="hcard s-${s.subj}" data-v="${i}" ${keepCard(id)?'disabled':''}><div class="art" ${artStyle(id)}>${artHTML(id)}</div><b>${s.en}</b></button>`}).join('')}</div>`,buttons:[]});
+  const give=p.hand.splice(+v,1)[0];const tf=freeIdx(t);const j=tf[rnd(tf.length)];const get=t.hand.splice(j,1)[0];p.hand.push(get);t.hand.push(give);
   log(`<b>${esc(p.name)}</b> แลก ${SKILLS[give].en} กับ ${SKILLS[get].en} ของ <b>${esc(t.name)}</b>`);
   await info('แลกการ์ดสำเร็จ',`<p style="margin:0">ได้ <b>${SKILLS[get].en}</b> จาก ${esc(t.name)}</p>`);
 }
@@ -1095,9 +1116,11 @@ function banner(p){const b=document.createElement('div');b.className='banner';b.
 async function frozenTurn(p){
   await sleep(900);G.busy=false;renderConsole();
   const canVax=p.char==='pasteur'&&p.uses>0&&!p.blocked;
-  const v=await ask({title:'แช่แข็ง!',body:`<p style="margin:0">${esc(p.name)} ติดอยู่ในยุคน้ำแข็ง ต้องข้ามเทิร์นนี้</p>`,buttons:[{l:'ข้ามเทิร์น',v:'skip',k:'primary'},...(canVax?[{l:'ใช้วัคซีนละลายน้ำแข็ง',v:'vax',k:'ghost'}]:[])]});
+  const nk=p.status.nuke,left=p.status.frozen-1;
+  const v=await ask({title:nk?'☢ โดนนิวเคลียร์!':'แช่แข็ง!',body:`<p style="margin:0">${nk?`${esc(p.name)} ต้องหยุดเล่น ข้ามเทิร์นนี้ ${left>0?`(เหลืออีก ${left} รอบ)`:'(รอบสุดท้ายแล้ว)'}`:`${esc(p.name)} ติดอยู่ในยุคน้ำแข็ง ต้องข้ามเทิร์นนี้`}</p>`,buttons:[{l:'ข้ามเทิร์น',v:'skip',k:'primary'},...(canVax?[{l:nk?'ใช้วัคซีนรักษา':'ใช้วัคซีนละลายน้ำแข็ง',v:'vax',k:'ghost'}]:[])]});
   if(v==='vax'){await useAbility(p);if(!p.status.frozen)return}
-  p.status.frozen=0;log(`<b>${esc(p.name)}</b> ถูกแช่แข็ง ข้ามเทิร์น`);endTurn();
+  p.status.frozen=Math.max(0,(p.status.frozen||1)-1);if(!p.status.frozen)p.status.nuke=false;
+  log(nk?`<b>${esc(p.name)}</b> โดนนิวเคลียร์ ข้ามเทิร์น${p.status.frozen?` (เหลือ ${p.status.frozen} รอบ)`:''}`:`<b>${esc(p.name)}</b> ถูกแช่แข็ง ข้ามเทิร์น`);endTurn();
 }
 async function onAct(){
   const p=cur();if(G.busy)return;
@@ -1238,14 +1261,15 @@ async function useSkill(p,id){
     case 'pestilence':{const opts=[];if(G.phase==='rolled')opts.push({l:'ลดแต้มของตัวเอง −1',v:'self',k:'primary'});if(others(p).length)opts.push({l:'ใช้กับศัตรู',v:'enemy',k:'primary'});opts.push({l:'ยกเลิก',v:'',k:'ghost'});const m=opts.length>2?await ask({title:'Pestilence',body:'<p style="margin:0">ใช้กับใคร</p>',buttons:opts}):opts[0].v;if(!m)return;prm.mode=m;if(m==='enemy'){prm.t=await pickPlayer(p,()=>true,'Pestilence: เลือกศัตรู (ทอยครั้งถัดไป −1)','','pestilence');if(!prm.t)return}break}
     case 'natural':if(combo){prm.sq=await pickSquare('ยีราฟตัวที่ 2: เลือกช่องที่จะวาง',n=>n>1&&n<FINISH,p.pos);if(!prm.sq)return}break;
     case 'chem':{prm.t=await pickPlayer(p,()=>true,'Chemical Reaction: เลือกศัตรู','','chem');if(!prm.t)return;const n=await ask({title:'ให้ถอยหลังกี่ช่อง?',body:'<p style="margin:0">ทอยได้เลขคู่ ศัตรูถอย · เลขคี่ เราถอยเองแทน</p>',buttons:[1,2,3,4,5].map(x=>({l:x+' ช่อง',v:x,k:'primary'})).concat([{l:'ยกเลิก',v:'',k:'ghost'}])});if(!n)return;prm.n=+n;break}
-    case 'sun':prm.t=await pickPlayer(p,o=>o.hand.length>0,'The Sun: เลือกศัตรูที่จะเผาการ์ด','ไม่มีศัตรูที่เผาการ์ดได้','sun');if(!prm.t)return;break;
+    case 'sun':prm.t=await pickPlayer(p,o=>freeIdx(o).length>0,'The Sun: เลือกศัตรูที่จะเผาการ์ด','ไม่มีศัตรูที่เผาการ์ดได้','sun');if(!prm.t)return;break;
     case 'magnet':{const r=p.char==='tesla'?8:5;prm.t=await pickPlayer(p,o=>o.pos>p.pos&&o.pos-p.pos<=r,`Magnet: เลือกศัตรูข้างหน้าไม่เกิน ${r} ช่อง เราจะถูกดูดไปหา`);if(!prm.t)return;break}
+    case 'nuclear':prm.ts=await pickPlayers(p,3,'☢ Nuclear: เลือกศัตรู 1–3 คน ให้หยุดเล่น 5 รอบ','nuclear');if(!prm.ts)return;break;
     case 'blackhole':{const r=p.char==='kepler'?10:6;prm.t=await pickPlayer(p,o=>o.pos>p.pos&&o.pos-p.pos<=r,`Black Hole: เลือกศัตรูที่อยู่ข้างหน้าไม่เกิน ${r} ช่อง`,'','blackhole');if(!prm.t)return;break}
   }
   if(skillBlock(p,id))return;
   const idx=p.hand.indexOf(id);if(idx<0)return;
-  p.hand.splice(idx,1);G.discard.push(id);if(id!=='azoth')p.usedSkill=true;
-  log(`<b>${esc(p.name)}</b> ใช้การ์ด ${s.en}${prm.t?` กับ <b>${esc(prm.t.name)}</b>`:''}`);render();
+  p.hand.splice(idx,1);if(!s.secret)G.discard.push(id);if(id!=='azoth')p.usedSkill=true;
+  log(`<b>${esc(p.name)}</b> ใช้การ์ด ${s.en}${prm.t?` กับ <b>${esc(prm.t.name)}</b>`:''}${prm.ts?` กับ <b>${prm.ts.map(o=>esc(o.name)).join(', ')}</b>`:''}`);render();
   if(p.status.fake){p.status.fake=false;await info('ข่าวปลอม!',`<p style="margin:0">การ์ด ${s.en} ไม่มีผล</p>`);render();save();return}
   if(await curieCheck(p,`การ์ด ${s.en}`)){render();save();return}
   G.busy=true;renderConsole();
@@ -1262,11 +1286,12 @@ async function applySkill(p,id,prm,combo){
     case 'natural':placeGiraffe(p.pos,p);if(combo)placeGiraffe(prm.sq,p);toast('อัญเชิญยีราฟแล้ว!');break;
     case 'azoth':{if(combo){const three=[drawOne('azoth'),drawOne('azoth'),drawOne('azoth')].filter(Boolean);if(!three.length)break;const v=await ask({title:'Azoth + มารี กูว์รี: เลือก 1 ใบ',body:`<div class="hand">${three.map((c,i)=>{const s=SKILLS[c];return `<button class="hcard s-${s.subj}" data-v="${i}"><div class="art" ${artStyle(c)}>${artHTML(c)}</div><b>${s.en}</b></button>`}).join('')}</div>`,buttons:[]});const pick=three.splice(+v,1)[0];p.hand.push(pick);three.forEach(c=>G.deck.unshift(c));toast(`แปรธาตุเป็น ${SKILLS[pick].en}`)}else{const c=drawOne('azoth');if(c){p.hand.push(c);await info('แปรธาตุสำเร็จ',skillCardHTML(c,p))}}break}
     case 'chem':{const v=await rollOne(`Chemical Reaction: ${prm.n} ช่อง`);if(v%2===0){toast(`ได้ ${v} (คู่) ${t.name} ถอย ${prm.n} ช่อง`);if(await hitMsg('chem'))await pushBack(t,prm.n)}else{toast(`ได้ ${v} (คี่) ปฏิกิริยาย้อนกลับ! ${p.name} ถอย ${prm.n} ช่อง`);await pushBack(p,prm.n)}break}
-    case 'sun':{if(!await hitMsg('sun'))break;const v=ONLINE()&&!isMine(t)?await askRemote(t,{kind:'sun'},30000,String(rnd(t.hand.length))):await ask({who:t,title:'The Sun: เลือกการ์ดที่จะให้เผา 1 ใบ',body:`<div class="hand">${t.hand.map((c,i)=>{const s=SKILLS[c];return `<button class="hcard s-${s.subj}" data-v="${i}"><div class="art" ${artStyle(c)}>${artHTML(c)}</div><b>${s.en}</b></button>`}).join('')}</div>`,buttons:[]});const lost=loseCards(t,[+v]);log(`<b>${esc(t.name)}</b> ถูกเผาการ์ด ${SKILLS[lost[0]].en}`);toast(`เผา ${SKILLS[lost[0]].en} ของ ${t.name}`);break}
+    case 'sun':{if(!await hitMsg('sun'))break;const v=ONLINE()&&!isMine(t)?await askRemote(t,{kind:'sun'},30000,String((f=>f[rnd(f.length)])(freeIdx(t)))):await ask({who:t,title:'The Sun: เลือกการ์ดที่จะให้เผา 1 ใบ',body:`<div class="hand">${t.hand.map((c,i)=>{const s=SKILLS[c];return `<button class="hcard s-${s.subj}" data-v="${i}" ${keepCard(c)?'disabled':''}><div class="art" ${artStyle(c)}>${artHTML(c)}</div><b>${s.en}</b></button>`}).join('')}</div>`,buttons:[]});const lost=loseCards(t,[+v]);if(lost.length){log(`<b>${esc(t.name)}</b> ถูกเผาการ์ด ${SKILLS[lost[0]].en}`);toast(`เผา ${SKILLS[lost[0]].en} ของ ${t.name}`)}break}
     case 'catalyst':G.roll.mods.push({l:'Catalyst',v:combo?5:3});toast(`แต้มรวม +${combo?5:3}`);break;
     case 'blackhole':if(await hitMsg('blackhole')){await slide(t,p.pos);toast(`${t.name} ถูกดูดมาที่ช่อง ${p.pos}`)}break;
     case 'magnet':{const to=t.pos;await slide(p,to);log(`<b>${esc(p.name)}</b> ถูกแม่เหล็กดูดไปช่อง ${to}`);toast(`ถูกดูดไปอยู่ช่อง ${to} กับ ${t.name}`);break}
     case 'photo':{const n=drawCards(p,2);log(`<b>${esc(p.name)}</b> จั่วการ์ดเพิ่ม ${n} ใบ`);await info('การสังเคราะห์ด้วยแสง',`<p style="margin:0">${n?`จั่วการ์ดสกิลเพิ่ม ${n} ใบ`:'มือเต็มแล้ว จั่วเพิ่มไม่ได้'}</p>`);break}
+    case 'nuclear':{const hitL=[],safe=[];for(const o of prm.ts){const w=guard(o,'nuclear');if(w){safe.push(w);continue}o.status.frozen=Math.max(o.status.frozen||0,5);o.status.nuke=true;hitL.push(o.name)}log(`☢ นิวเคลียร์! ${hitL.map(esc).join(', ')||'ไม่มีใคร'} ต้องหยุดเล่น 5 รอบ`);await info('☢ นิวเคลียร์!',`<p style="margin:0">${hitL.length?esc(hitL.join(', '))+' ต้องหยุดเล่น 5 รอบ':'ไม่มีใครโดน'}${safe.length?'<br><span class="muted">'+safe.map(esc).join('<br>')+'</span>':''}</p>`);break}
     case 'meteor':{const n=combo?3:2;const hitList=[],safe=[];for(const o of others(p)){const w=guard(o,'meteor');if(w){safe.push(w);continue}await pushBack(o,n);hitList.push(o.name)}log(`ฝนดาวตก! ${hitList.map(esc).join(', ')||'ไม่มีใคร'} ถอยหลัง ${n} ช่อง`);await info('ฝนดาวตก!',`<p style="margin:0">${hitList.length?esc(hitList.join(', '))+` ถอยหลัง ${n} ช่อง`:'ไม่มีใครโดน'}${safe.length?'<br><span class="muted">'+safe.map(esc).join('<br>')+'</span>':''}</p>`);break}
   }
 }
@@ -1279,7 +1304,7 @@ async function useAbility(p){
   switch(p.char){
     case 'tesla':prm.t=await pickPlayer(p,()=>true,'คลื่นไฟฟ้า: เลือกศัตรูที่จะช็อต','','tesla');if(!prm.t)return;break;
     case 'einstein':prm.t=await pickPlayer(p,o=>Math.abs(o.pos-p.pos)<=8&&o.pos!==p.pos,'บิดกาลอวกาศ: สลับตำแหน่งกับศัตรูที่ห่างไม่เกิน 8 ช่อง','','einstein');if(!prm.t)return;break;
-    case 'newton':prm.t=await pickPlayer(p,o=>o.hand.length>0,'แรงโน้มถ่วง: ดึงการ์ดจากศัตรู','','newton');if(!prm.t)return;break;
+    case 'newton':prm.t=await pickPlayer(p,o=>freeIdx(o).length>0,'แรงโน้มถ่วง: ดึงการ์ดจากศัตรู','','newton');if(!prm.t)return;break;
     case 'mendeleev':{const v=await ask({title:'ทำนายธาตุ',body:'<p style="margin:0">ทายว่าแต้มรวมของลูกเต๋า 2 ลูกจะเป็นเลขอะไร ทายถูกเดินเพิ่ม 3 ช่อง</p>',buttons:[{l:'เลขคู่',v:'even',k:'primary'},{l:'เลขคี่',v:'odd',k:'primary'},{l:'ยกเลิก',v:'',k:'ghost'}]});if(!v)return;prm.v=v;break}
     case 'pasteur':{const v=await ask({title:'วัคซีน',body:`<p style="margin:0">ล้างสถานะร้ายทั้งหมด และไม่โดนสกิล พลัง หรือ Event ร้าย จนถึงเทิร์นถัดไปของ ${esc(p.name)}</p>`,buttons:[{l:'ฉีดวัคซีน',v:'y',k:'primary'},{l:'ยกเลิก',v:'',k:'ghost'}]});if(!v)return;break}
     case 'kepler':break;
@@ -1293,9 +1318,9 @@ async function useAbility(p){
     switch(p.char){
       case 'tesla':if(await hit('tesla')){t.status.shock=Math.max(t.status.shock,1);toast(`ช็อต ${t.name}! เทิร์นถัดไปใช้การ์ดและพลังไม่ได้`)}break;
       case 'einstein':if(await hit('einstein')){const a=p.pos,b=t.pos;p.pos=b;t.pos=a;landFx(p);renderBoard();toast(`สลับตำแหน่งกับ ${t.name}`)}break;
-      case 'newton':if(await hit('newton')){const j=rnd(t.hand.length);const card=t.hand.splice(j,1)[0];lavoisier(t);if(p.hand.length<HAND_MAX){p.hand.push(card);toast(`ดึง ${SKILLS[card].en} จาก ${t.name}`)}else{G.discard.push(card);toast('มือเต็ม การ์ดที่ดึงมาถูกทิ้ง')}}break;
+      case 'newton':if(await hit('newton')){const tf=freeIdx(t);if(!tf.length){toast(`${t.name} ไม่มีการ์ดให้ดึง`);break}const j=tf[rnd(tf.length)];const card=t.hand.splice(j,1)[0];lavoisier(t);if(p.hand.length<HAND_MAX){p.hand.push(card);toast(`ดึง ${SKILLS[card].en} จาก ${t.name}`)}else{G.discard.push(card);toast('มือเต็ม การ์ดที่ดึงมาถูกทิ้ง')}}break;
       case 'mendeleev':G.predict=prm.v;toast(`ทายว่า${prm.v==='even'?'เลขคู่':'เลขคี่'}`);break;
-      case 'pasteur':Object.assign(p.status,{frozen:0,shock:0,fake:false,pest:0,immune:true});p.blocked=false;toast(`${p.name} ฉีดวัคซีนแล้ว`);break;
+      case 'pasteur':Object.assign(p.status,{frozen:0,shock:0,fake:false,pest:0,nuke:false,immune:true});p.blocked=false;toast(`${p.name} ฉีดวัคซีนแล้ว`);break;
       case 'kepler':{const old=G.roll.d.slice();G.busy=false;const s=openModal(`<h3 style="text-align:center">วงโคจรวงรี: ทอยใหม่</h3><div class="row" style="justify-content:center;gap:16px">${dieHTML(1,true)}${dieHTML(1,true)}</div>`);const dice=$$('.die',s);dice.forEach(d=>d.classList.add('spin'));for(let k=0;k<9;k++){dice.forEach(d=>setDie(d,1+rnd(6)));await sleep(80)}s.remove();const nd=[1+rnd(6),1+rnd(6)];
         const v=await ask({title:'เลือกผลที่ต้องการ',body:`<div class="btns"><button class="btn ghost" data-v="old" style="min-height:96px;flex-direction:column"><div class="dice">${dieHTML(old[0])}${dieHTML(old[1])}</div>ผลเดิม ${old[0]+old[1]}</button><button class="btn ghost" data-v="new" style="min-height:96px;flex-direction:column"><div class="dice">${dieHTML(nd[0])}${dieHTML(nd[1])}</div>ผลใหม่ ${nd[0]+nd[1]}</button></div>`,buttons:[]});
         if(v==='new')G.roll.d=nd;break}
@@ -1348,10 +1373,10 @@ function rulesModal(){
   <section><h4>ช่อง Event</h4>${evListHTML()}<p class="hint" style="margin:8px 0 0">Event ทำงานเมื่อผู้เล่นหยุดที่ช่องนั้นในเทิร์นของตัวเอง ถ้าถูกสกิลผลักไปหยุดจะไม่ทำงาน</p></section></div>`,buttons:[{l:'เข้าใจแล้ว',v:'',k:'primary'}]});
 }
 function galleryModal(tab='chars'){
-  const tabs=`<div class="tabs" role="tablist"><button role="tab" data-v="t:chars" aria-selected="${tab==='chars'}">ตัวละคร 10 ตัว</button><button role="tab" data-v="t:skills" aria-selected="${tab==='skills'}">การ์ดสกิล ${Object.keys(SKILLS).length} ใบ</button><button role="tab" data-v="t:events" aria-selected="${tab==='events'}">ช่อง Event</button></div>`;
+  const tabs=`<div class="tabs" role="tablist"><button role="tab" data-v="t:chars" aria-selected="${tab==='chars'}">ตัวละคร 10 ตัว</button><button role="tab" data-v="t:skills" aria-selected="${tab==='skills'}">การ์ดสกิล ${Object.keys(SKILLS).filter(k=>!SKILLS[k].secret).length} ใบ</button><button role="tab" data-v="t:events" aria-selected="${tab==='events'}">ช่อง Event</button></div>`;
   let body='';
   if(tab==='chars')body=`<div class="cgrid">${CHARS.map(c=>`<button class="ccard s-${c.subj}" data-v="c:${c.id}"><div class="ph"><img src="${av(c.id)}" alt="" loading="lazy">${chipSubj(c.subj)}${c.isNew?'<span class="new-badge">ใหม่</span>':''}</div><div class="bd"><b>${c.name}</b><span>${c.ab} · ${c.uses<0?'ติดตัว':'ใช้ได้ '+c.uses+' ครั้ง'}</span></div></button>`).join('')}</div>`;
-  else if(tab==='skills')body=`<div class="skills-grid">${Object.keys(SKILLS).map(id=>skillCardHTML(id)).join('')}</div>`;
+  else if(tab==='skills')body=`<div class="skills-grid">${Object.keys(SKILLS).filter(k=>!SKILLS[k].secret).map(id=>skillCardHTML(id)).join('')}</div>`;
   else body=evListHTML();
   ask({title:'ตัวละคร การ์ดสกิล และช่อง Event',body:tabs+body,buttons:[{l:'ปิด',v:'',k:'primary'}],wide:true}).then(v=>{
     if(v&&v.startsWith('t:'))galleryModal(v.slice(2));
@@ -1631,12 +1656,12 @@ function handlePrompt(){
   const reply=v=>{closePromptModal();NET.db.doc(`rooms/${NET.code}/replies/${pr.id}`).set({v:String(v),at:Date.now()}).catch(()=>toast('ส่งคำตอบไม่สำเร็จ'))};
   let html='';
   if(pr.kind==='curie'){const a=P(pr.actor);html=`<h3>รังสีลบล้าง!</h3><p style="margin:0">${esc(a.name)} กำลังใช้ <b>${esc(pr.label)}</b><br>ต้องการยกเลิกไหม? เหลือใช้ได้อีก ${me.uses} ครั้ง</p><div class="btns"><button class="btn danger" data-r="y">ยกเลิกเลย!</button><button class="btn ghost" data-r="n">ปล่อยผ่าน</button></div>`}
-  else if(pr.kind==='sun'){html=`<h3>The Sun: เลือกการ์ดของคุณที่จะถูกเผา 1 ใบ</h3><div class="hand">${me.hand.map((c,i)=>{const s=SKILLS[c];return `<button class="hcard s-${s.subj}" data-r="${i}"><div class="art" ${artStyle(c)}>${artHTML(c)}</div><b>${s.en}</b></button>`}).join('')}</div>`}
+  else if(pr.kind==='sun'){html=`<h3>The Sun: เลือกการ์ดของคุณที่จะถูกเผา 1 ใบ</h3><div class="hand">${me.hand.map((c,i)=>{const s=SKILLS[c];return `<button class="hcard s-${s.subj}" data-r="${i}" ${keepCard(c)?'disabled':''}><div class="art" ${artStyle(c)}>${artHTML(c)}</div><b>${s.en}</b></button>`}).join('')}</div>`}
   else return;
   const left=Math.max(3,Math.round((pr.until-Date.now())/1000)-1);
   const el=openModal(`${html}<p class="hint" style="margin:0">ตอบภายในประมาณ ${left} วินาที ไม่อย่างนั้นระบบจะเลือกให้</p>`);
   NET.promptOpen={id:pr.id,el};
-  el.addEventListener('click',e=>{const b=e.target.closest('[data-r]');if(b)reply(b.dataset.r)});
+  el.addEventListener('click',e=>{const b=e.target.closest('[data-r]');if(b&&!b.disabled)reply(b.dataset.r)});
 }
 function renderSpectator(el){
   const p=cur(),c=CH[p.char],me=myPlayer();el.style.setProperty('--pc',p.color);
